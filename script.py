@@ -12,24 +12,18 @@ def get_data(type):
     return data    
 
 def process_orderbook(data, amount):
+    amount = int(amount)
     bids = data["bids"]
     asks = data["asks"]
     print("Buy orders")
-    for i in range(0, amount):
+    for i in range(amount):
         bids[i].pop(-1)
         print(bids[i])
 
     print("\n" + "Sell orders")
-    for i in range(0, amount):
+    for i in range(amount):
         asks[i].pop(-1)
         print(asks[i])
 
 def process_general_data(data):
     print("\nLast buy: " + str(data["last"]))
-
-
-info = get_data("ticker")
-orderbook = get_data("orderbook")
-process_orderbook(orderbook, 3)
-process_general_data(info)
-
